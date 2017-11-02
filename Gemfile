@@ -60,6 +60,9 @@ gem 'devise'
 # active admin - backend CRUD management for administrators
 gem 'activeadmin', github: 'activeadmin'
 
+# Country selector, to allow selection of country
+gem 'country_select'
+
 # rubocop - code checker
 # gem 'rubocop'
 
