@@ -52,3 +52,24 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Project Specific Gems
+# Devise - provides framework for active admin
+gem 'devise'
+
+# active admin - backend CRUD management for administrators
+gem 'activeadmin', github: 'activeadmin'
+
+# rubocop - code checker
+# gem 'rubocop'
+
+# slim - enables cleaner front-end source files
+# gem 'slim'
+
+# paperclip - file upload
+# gem 'paperclip'
+
+# bootstrap
+# gem 'bootstrap'
+
+# stripe
