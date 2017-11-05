@@ -27,3 +27,18 @@ parse_csv('provinces.csv').each do |row|
                    gst: row['gst'],
                    hst: row['hst'])
 end
+
+parse_csv('categories.csv').each do |row|
+  Category.create!(name: row['name'],
+                   description: row['description'])
+end
+
+parse_csv('products.csv').each do |row|
+  Product.create!(name: row['name'],
+                  description: row['description'],
+                  price: row['price'],
+                  sale_price: row['sale_price'],
+                  stock_quantity: row['stock_quantity'],
+                  category_id: row['category_id'],
+                  image: row['image'])
+end
