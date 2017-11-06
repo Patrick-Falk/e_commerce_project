@@ -67,7 +67,7 @@ gem 'country_select'
 # gem 'rubocop'
 
 # slim - enables cleaner front-end source files
-# gem 'slim'
+gem 'slim-rails'
 
 # paperclip - file upload
 # gem 'paperclip'
