@@ -1,24 +1,24 @@
 h1 Products#index
 p Find me in app/views/products/index.html.slim
 
-/h1 Listing Products
-/
-/table
-/  thead
-/    tr
-/      th Name
-/      th Price
-/      th Description
-/      th
-/      th
-/      th
-/
-/  tbody
-/    - @products.each do |product|
-/      tr
-/        td = product.name
-/        td = product.price
-/        td = product.description
-/        td = link_to 'Show', product
-/
-/br
+h1 Listing Products
+
+table
+  thead
+    tr
+      th Name
+      th Price
+      th Description
+      th
+      th
+      th
+
+  tbody
+    - @products.each do |product|
+      tr
+        td = product.name
+        td = product.price
+        td = product.description
+        td = link_to 'Show', product
+
+br
