@@ -74,7 +74,7 @@ gem 'slim-rails'
 
 # pagination library
 # gem 'will_paginate', '~> 3.0.5'   doesn't work with active admin\
-
+gem 'kaminari'
 
 
 # Rails Layout

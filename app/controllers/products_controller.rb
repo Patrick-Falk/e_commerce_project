@@ -2,8 +2,7 @@ class ProductsController < ApplicationController
 
   helper_method :sort_column, :sort_direction
   def index
-    # @products = Product.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
-    @products = Product.search(params[:search]).order(sort_column + " " + sort_direction)
+    @products = Product.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(5)
   end
 
   def show
