@@ -3,12 +3,12 @@ p Find me in app/views/products/index.html.slim
 
 h1 Listing Products
 
-table
+table.pretty
   thead
     tr
-      th = link_to 'Name', :sort => "name"
+      th = sortable "name"
       th Category
-      th = link_to 'Price', :sort => "price"
+      th = sortable "price"
       th
 
   tbody
