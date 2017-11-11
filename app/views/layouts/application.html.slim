@@ -1,15 +1,16 @@
 doctype html
 html
   head
-    title ECommerce Project
-    = csrf_meta_tags
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-
+    meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+    title
+      = content_for?(:title) ? yield(:title) : 'E Commerce Project'
+    meta name="description" content="#{content_for?(:description) ? yield(:description) : 'E Commerce Project'}"
+    == stylesheet_link_tag "application", :media => 'all', 'data-turbolinks-track' => 'reload'
+    == javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
+    == csrf_meta_tags
   body
-    => 'Hello'
-    '|
-    =< 'World'
-    = yield
-
-    /link_to 'Back', products_path
+    header
+      == render 'layouts/navigation'
+    main[role="main"]
+      == render 'layouts/messages'
+      == yield
