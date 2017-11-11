@@ -72,6 +72,11 @@ gem 'country_select'
 # slim - enables cleaner front-end source files
 gem 'slim-rails'
 
+# pagination library
+# gem 'will_paginate', '~> 3.0.5'   doesn't work with active admin\
+
+
+
 # Rails Layout
 
 
