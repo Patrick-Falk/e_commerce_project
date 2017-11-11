@@ -6,10 +6,9 @@ h1 Listing Products
 table
   thead
     tr
-      th Name
+      th = link_to 'Name', :sort => "name"
       th Category
-      th Price
-      th Description
+      th = link_to 'Price', :sort => "price"
       th
 
   tbody
@@ -18,7 +17,6 @@ table
         td = product.name
         td = product.category.name
         td = product.price
-        td = product.description
         td = link_to 'Show', product
 
 br
