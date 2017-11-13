@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   def index
     # @categories = Product.categories
     @categories = Category.all
-    @products = Product.filter(params[:asdf])
+    @products = Product.filter(params[:product])
                        .search(params[:search])
                        .order(sort_column + " " + sort_direction)
                        .page(params[:page]).per(5)

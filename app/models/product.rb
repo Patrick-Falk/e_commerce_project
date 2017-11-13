@@ -3,9 +3,9 @@ class Product < ApplicationRecord
   has_many :lineItems
   has_many :orders, through: :lineItems
 
-  def self.filter(category)
-    if category
-      where('category_id: ?', category)
+  def self.filter(product)
+    if product
+      where(category_id: product[:category_id])
     else
       all
     end
