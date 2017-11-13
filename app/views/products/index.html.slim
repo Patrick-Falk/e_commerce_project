@@ -7,8 +7,8 @@ h1 Listing Products
   = hidden_field_tag :direction, params[:direction]
   = hidden_field_tag :sort, params[:sort]
   p
-    /= select_tag :
     = text_field_tag :search, params[:search]
+    = collection_select(:product, :category_id, @categories, :id, :name, {prompt: 'Select Category'})
     = submit_tag "Search", :name => nil
 
 table.pretty
