@@ -5,9 +5,15 @@ class Product < ApplicationRecord
 
   def self.filter(product)
     if product
-      where(category_id: product[:category_id])
+      if product[:category_id] != ''
+    # if product[:category_id]
+        where(category_id: product[:category_id])
+      else
+        all
+      end
     else
       all
+      # where(category_id: 1)
     end
   end
 
