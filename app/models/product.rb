@@ -3,17 +3,17 @@ class Product < ApplicationRecord
   has_many :lineItems
   has_many :orders, through: :lineItems
 
+  # scope :category, lambda{|category| where('category_id = ?', category)}
+
   def self.filter(product)
     if product
       if product[:category_id] != ''
-    # if product[:category_id]
         where(category_id: product[:category_id])
       else
-        all
+        where(nil)
       end
     else
-      all
-      # where(category_id: 1)
+      where(nil)
     end
   end
 
@@ -21,7 +21,7 @@ class Product < ApplicationRecord
     if search
       where('name LIKE ?', "%#{search}%").or(where('description LIKE ?', "%#{search}%"))
     else
-      all
+      where(nil)
     end
   end
 end
