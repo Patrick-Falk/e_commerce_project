@@ -83,7 +83,7 @@ gem 'kaminari'
 # paperclip - file upload
 # gem 'paperclip'
 
-# bootstrap
-# gem 'bootstrap'
+# styling gem based on SASS
+gem 'foundation-rails'
 
 # stripe
