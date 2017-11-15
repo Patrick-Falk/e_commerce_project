@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'contact_us', to: 'pages#contact', as: 'contact'
 
+  get 'home', to: 'pages#home', as: 'home'
+
   get 'products', to: 'products#index', as: 'products'
 
   get 'products/:id', to: 'products#show', as: 'product', id: /\d+/
