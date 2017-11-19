@@ -81,7 +81,9 @@ gem 'kaminari'
 
 
 # paperclip - file upload
-# gem 'paperclip'
+gem 'carrierwave', '~> 0.10.0'
+gem 'graphicsmagick'
+gem 'mini_magick', '~> 4.3'
 
 # styling gem based on SASS
 gem 'foundation-rails'
