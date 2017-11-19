@@ -3,6 +3,8 @@ class Product < ApplicationRecord
   has_many :lineItems
   has_many :orders, through: :lineItems
 
+  mount_uploader :image, ImageUploader
+
   # scope :category, lambda{|category| where('category_id = ?', category)}
 
   def self.filter(product)
