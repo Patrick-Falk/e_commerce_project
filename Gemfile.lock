@@ -294,10 +294,7 @@ DEPENDENCIES
   country_select
   devise
   foundation-rails
-<<<<<<< HEAD
-=======
   graphicsmagick
->>>>>>> image_uploader
   jbuilder (~> 2.5)
   kaminari
   listen (>= 3.0.5, < 3.2)
