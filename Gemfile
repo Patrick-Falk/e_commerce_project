@@ -76,10 +76,6 @@ gem 'slim-rails'
 # gem 'will_paginate', '~> 3.0.5'   doesn't work with active admin\
 gem 'kaminari'
 
-
-# Rails Layout
-
-
 # paperclip - file upload
 gem 'carrierwave', '~> 0.10.0'
 gem 'graphicsmagick'
