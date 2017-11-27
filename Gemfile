@@ -82,6 +82,6 @@ gem 'graphicsmagick'
 gem 'mini_magick', '~> 4.3'
 
 # styling gem based on SASS
-gem 'foundation-rails'
+# gem 'foundation-rails'
 
 # stripe
