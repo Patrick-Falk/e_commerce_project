@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get 'products/:id', to: 'products#show', as: 'product', id: /\d+/
 
+  get 'products/table', to: 'products#table', as: 'table'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 

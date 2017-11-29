@@ -11,6 +11,15 @@ class ProductsController < ApplicationController
                        .page(params[:page]).per(5)
   end
 
+  def table
+    # @categories = Product.categories
+    @categories = Category.all
+    @products = Product.filter(params[:product])
+                    .search(params[:search])
+                    .order(sort_column + " " + sort_direction)
+                    .page(params[:page]).per(5)
+  end
+
   def category
     @categories = Category.all
     @products = Product.where(category_id: params[:id])

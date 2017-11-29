@@ -81,7 +81,7 @@ gem 'carrierwave', '~> 0.10.0'
 gem 'graphicsmagick'
 gem 'mini_magick', '~> 4.3'
 
-# styling gem based on SASS
-# gem 'foundation-rails'
+# styling gem
+gem 'bootstrap', '~> 4.0.0.beta2.1'
 
 # stripe
