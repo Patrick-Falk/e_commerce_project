@@ -2,10 +2,12 @@ p
   | You have visited this page #{pluralize(@visit_count, 'time')}.
 
   /= debug session[:visit_count]
-  = debug session[:shopping_cart]
+  /= debug session[:shopping_cart]
 
 - if @shopping_cart.any?
   h1 Shopping Cart
+  p
+    = link_to 'Remove All from Cart', remove_all_from_cart_products_path, method: :post
 
   table.pretty
     thead
@@ -13,6 +15,7 @@ p
         th = sortable "name"
         th Category
         th = sortable "price"
+        th Quantity
         th
         th
         th
@@ -23,8 +26,9 @@ p
           td = product.name
           td = product.category.name
           td = product.price
+          td 1
           td = link_to 'Show', product
-          td = link_to 'Add To Cart', add_to_cart_product_path(product), method: :post
+          td
           td = link_to 'Remove From Cart', remove_from_cart_product_path(product), method: :post
 
 
@@ -57,8 +61,13 @@ table.pretty
         td = product.category.name
         td = product.price
         td = link_to 'Show', product
-        td = link_to 'Add To Cart', add_to_cart_product_path(product), method: :post
-        td = link_to 'Remove From Cart', remove_from_cart_product_path(product), method: :post
+        - if @shopping_cart.include?(product)
+          td Already in cart
+          td = link_to 'Remove From Cart', remove_from_cart_product_path(product), method: :post
+        - else
+          td = link_to 'Add To Cart', add_to_cart_product_path(product), method: :post
+          td not yet in cart
+
 = paginate @products
 
 br

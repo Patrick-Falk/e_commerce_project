@@ -46,7 +46,14 @@ class ProductsController < ApplicationController
   end
 
   def remove_from_cart
+    id = params[:id].to_i
+    session[:shopping_cart].delete(id)
+    redirect_to root_url
+  end
 
+  def remove_all_from_cart
+    session[:shopping_cart] = []
+    redirect_to root_url
   end
 
   private

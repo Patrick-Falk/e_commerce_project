@@ -11,6 +11,9 @@ Rails.application.routes.draw do
       post :add_to_cart
       post :remove_from_cart
     end
+    collection do
+      post :remove_all_from_cart
+    end
   end
 
   # get 'products', to: 'products#index', as: 'products'
