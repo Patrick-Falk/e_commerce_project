@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   # has_scope :category
   before_action :initialize_session
   before_action :increment_visit_count, only: [:index]
+  before_action :load_shopping_cart, only: [:index]
 
   helper_method :sort_column, :sort_direction
   def index
@@ -34,6 +35,20 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def add_to_cart
+    id = params[:id].to_i
+    # debugging
+    # render plain: "Remembering to call product with id #{id}"
+    session[:shopping_cart] << id unless session[:shopping_cart].include?(id)
+
+    # still need to render something
+    redirect_to root_url
+  end
+
+  def remove_from_cart
+
+  end
+
   private
 
   def filter_category
@@ -50,10 +65,15 @@ class ProductsController < ApplicationController
 
   def initialize_session
     session[:visit_count] ||= 0
+    session[:shopping_cart] ||= []
   end
 
   def increment_visit_count
     session[:visit_count] += 1
     @visit_count = session[:visit_count]
+  end
+
+  def load_shopping_cart
+    @shopping_cart = Product.find(session[:shopping_cart])
   end
 end

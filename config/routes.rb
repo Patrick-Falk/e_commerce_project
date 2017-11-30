@@ -6,11 +6,18 @@ Rails.application.routes.draw do
 
   get 'home', to: 'pages#home', as: 'home'
 
-  get 'products', to: 'products#index', as: 'products'
+  resources :products, only: [:index, :show] do
+    member do
+      post :add_to_cart
+      post :remove_from_cart
+    end
+  end
 
-  get 'products/:id', to: 'products#show', as: 'product', id: /\d+/
-
-  get 'products/table', to: 'products#table', as: 'table'
+  # get 'products', to: 'products#index', as: 'products'
+  #
+  # get 'products/:id', to: 'products#show', as: 'product', id: /\d+/
+  #
+  # get 'products/table', to: 'products#table', as: 'table'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
