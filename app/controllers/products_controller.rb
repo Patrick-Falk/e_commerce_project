@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
   # has_scope :category
+  before_action :initialize_session
+  before_action :increment_visit_count, only: [:index]
 
   helper_method :sort_column, :sort_direction
   def index
@@ -44,5 +46,14 @@ class ProductsController < ApplicationController
 
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+  def initialize_session
+    session[:visit_count] ||= 0
+  end
+
+  def increment_visit_count
+    session[:visit_count] += 1
+    @visit_count = session[:visit_count]
   end
 end
