@@ -37,23 +37,19 @@ class ProductsController < ApplicationController
 
   def add_to_cart
     id = params[:id].to_i
-    # debugging
-    # render plain: "Remembering to call product with id #{id}"
     session[:shopping_cart] << id unless session[:shopping_cart].include?(id)
-
-    # still need to render something
-    redirect_to root_url
+    redirect_to root_url, notice: "Successfully added product to the shopping cart"
   end
 
   def remove_from_cart
     id = params[:id].to_i
     session[:shopping_cart].delete(id)
-    redirect_to root_url
+    redirect_to root_url, notice: "Successfully removed product from the shopping cart"
   end
 
   def remove_all_from_cart
     session[:shopping_cart] = []
-    redirect_to root_url
+    redirect_to root_url, notice: "Successfully emptied the the shopping cart"
   end
 
   private
