@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  resources :customers
+
+  # get 'customers/new', to: "customer#new", as: 'new_customer'
+
+  get 'order/address'
+
+  get 'order/invoice'
+
+  get 'order/payment'
+
+  # get 'order/process_payment'
+
   get 'about', to: 'pages#about', as: 'about'
 
   get 'contact_us', to: 'pages#contact', as: 'contact'
