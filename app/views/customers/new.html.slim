@@ -1,5 +1,5 @@
-h1 Order#address
-p Find me in app/views/order/address.html.slim
+h1 Customers#new
+p Find me in app/views/customers/new.html.slim
 
 = form_with model: @customer, local: true do |f|
   p
@@ -24,6 +24,6 @@ p Find me in app/views/order/address.html.slim
     = f.label "Province"
     = f.collection_select("province_id", Province.all, :id, :name)
 
-  = f.submit
+  = f.submit "Confirm Address - go to Invoice"
 
-= button_to "Confirm Address - Go to Invoice", order_invoice_path, method: :get, :class => 'btn btn-success'
+/= button_to "Confirm Address - Go to Invoice", order_invoice_path, method: :get, :class => 'btn btn-success'

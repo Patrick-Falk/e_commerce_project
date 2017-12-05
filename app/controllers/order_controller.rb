@@ -4,6 +4,8 @@ class OrderController < ApplicationController
   end
 
   def invoice
+    # create new order object
+
   end
 
   def payment
