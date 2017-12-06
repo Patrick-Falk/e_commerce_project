@@ -1,6 +1,42 @@
-h1 Order#invoice
-p Find me in app/views/order/invoice.html.slim
+h1 Your Order
+h2 Invoice
+
+/= debug session[:customer]
+= debug session[:shopping_cart]
+
+/ Template
+  # Invoice for Mary Contra
+  # 342 Modem Drive
+  # Regina, SK
+  #
+p Invoice for #{@customer.first_name} #{@customer.last_name}
+p = @customer.address
+p #{@customer.city}, #{@province.name}
+
+/= @order
+br
+  /
+    # toy ghosts ................. 17 x $4.34 = $73.78
+    # sandcastle ................. 2 x $12.45 = $24.90
+    # shoe phone ................. 7 x $86.00 = $602.00
+    #
+- @line_items.each do |line_item|
+  p
+    | #{line_item.product.name} . . . . . . . . #{line_item.quantity} x $#{line_item.price} = $#{line_item.quantity * line_item.price}
+br
+/
+  # Sub Total    : $700.68
+  # PST (5.00%)  : $35.03
+  # GST (5.00%)  : $35.03
+  # Grand Total  : $770.74
+p = "Sub Total: $#{@subtotal}"
+- if @customer.province.pst > 0
+    p = "PST (#{@customer.province.pst}%) : $#{(@customer.province.pst * @subtotal).round(2)}"
+- if @customer.province.gst > 0
+    p = "GST (#{@customer.province.gst}%) : $#{(@customer.province.gst * @subtotal).round(2)}"
+- if @customer.province.hst > 0
+    p = "HST (#{@customer.province.hst}%) : $#{(@customer.province.hst * @subtotal).round(2)}"
+p = "Grand Total: $#{(@subtotal + (@customer.province.pst * @subtotal) + (@customer.province.gst * @subtotal) + (@customer.province.hst * @subtotal)).round(2)}"
 
 
-
-= button_to "Confirm Invoice - Go to Payment", order_payment_path, method: :get, :class => 'btn btn-success'
+= button_to "Confirm Order - Go to Payment", order_payment_path, method: :get, :class => 'btn btn-success'

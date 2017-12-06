@@ -4,10 +4,12 @@ class CustomersController < ApplicationController
   end
 
   def create
-    @customer = Customer.new(customer_params)
+    new_customer = Customer.new(customer_params)
+    # session[:customer] = new_customer
+    @customer = new_customer
 
     if @customer.save
-      redirect_to :controller => 'order', :action => 'invoice'
+      redirect_to :controller => 'order', :action => 'invoice', :variable => new_customer
     else
       render 'new'
     end
