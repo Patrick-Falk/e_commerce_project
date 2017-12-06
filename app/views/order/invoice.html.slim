@@ -29,14 +29,14 @@ br
   # PST (5.00%)  : $35.03
   # GST (5.00%)  : $35.03
   # Grand Total  : $770.74
-p = "Sub Total: $#{@subtotal}"
-- if @customer.province.pst > 0
-    p = "PST (#{@customer.province.pst}%) : $#{(@customer.province.pst * @subtotal).round(2)}"
-- if @customer.province.gst > 0
-    p = "GST (#{@customer.province.gst}%) : $#{(@customer.province.gst * @subtotal).round(2)}"
-- if @customer.province.hst > 0
-    p = "HST (#{@customer.province.hst}%) : $#{(@customer.province.hst * @subtotal).round(2)}"
-p = "Grand Total: $#{(@subtotal + (@customer.province.pst * @subtotal) + (@customer.province.gst * @subtotal) + (@customer.province.hst * @subtotal)).round(2)}"
+p = "Sub Total: $#{(@order.subtotal).round(2)}"
+- if @order.pst_amount > 0
+    p = "PST (#{@order.pst_rate}%) : $#{(@order.pst_amount).round(2)}"
+- if @order.gst_amount > 0
+    p = "GST (#{@order.gst_rate}%) : $#{(@order.gst_amount).round(2)}"
+- if @order.hst_amount > 0
+    p = "HST (#{@order.hst_rate}%) : $#{(@order.hst_amount).round(2)}"
+p = "Grand Total: $#{(@order.total).round(2)}"
 
 
 = button_to "Confirm Order - Go to Payment", order_payment_path, method: :get, :class => 'btn btn-success'

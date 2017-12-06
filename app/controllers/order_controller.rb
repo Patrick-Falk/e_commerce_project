@@ -8,11 +8,17 @@ class OrderController < ApplicationController
     customer_id = params[:variable]
     customer = Customer.find(customer_id.to_i)
     @customer = customer
-    @province = Province.find(customer.province_id)
+
+    # prep province
+    province = Province.find(customer.province_id)
+    @province = province
 
     # create new order object
-    order = Order.new(customer_id: customer_id.to_i)
-    @order = order
+    order = Order.create(customer_id: customer_id.to_i,
+                      pst_rate: province.pst_rate,
+                      gst_rate: province.gst_rate,
+                      hst_rate: province.hst_rate,
+                      pst_amount: 0, gst_amount: 0, hst_amount: 0)
 
     # create object containing line items, and populate lineitems... potentially refactor into model
     product_ids = session[:shopping_cart]
@@ -30,11 +36,15 @@ class OrderController < ApplicationController
     # Calculate Subtotal
     subtotal = 0
     line_items.each {|li| subtotal += (li.price * li.quantity)}
-    @subtotal = subtotal
+    order.update(subtotal: subtotal)
 
+    # calculate taxes
+    order.calculate_taxes
 
-    # total =
-    # @products
+    # calculate total
+    order.calculate_total
+
+    @order = order
   end
 
   def payment
