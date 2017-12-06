@@ -15,10 +15,11 @@ class OrderController < ApplicationController
 
     # create new order object
     order = Order.create(customer_id: customer_id.to_i,
-                      pst_rate: province.pst_rate,
-                      gst_rate: province.gst_rate,
-                      hst_rate: province.hst_rate,
-                      pst_amount: 0, gst_amount: 0, hst_amount: 0)
+                         pst_rate: province.pst_rate,
+                         gst_rate: province.gst_rate,
+                         hst_rate: province.hst_rate,
+                         status: "Initiated",
+                         pst_amount: 0, gst_amount: 0, hst_amount: 0)
 
     # create object containing line items, and populate lineitems... potentially refactor into model
     product_ids = session[:shopping_cart]
@@ -43,12 +44,21 @@ class OrderController < ApplicationController
 
     # calculate total
     order.calculate_total
-
+    session[:order] = order
     @order = order
   end
 
-  def payment
+  def confirm
+    # confirm placement of order
+    order = session[:order]
+    order.update(status: "Confirmed")
+
+    session[:shopping_cart] = []
+    session[:order] = []
   end
+
+  # def payment
+  # end
 
   # def process_payment
   # end

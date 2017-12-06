@@ -38,5 +38,4 @@ p = "Sub Total: $#{(@order.subtotal).round(2)}"
     p = "HST (#{@order.hst_rate}%) : $#{(@order.hst_amount).round(2)}"
 p = "Grand Total: $#{(@order.total).round(2)}"
 
-
-= button_to "Confirm Order - Go to Payment", order_payment_path, method: :get, :class => 'btn btn-success'
+= button_to "Confirm Order", order_confirm_path, method: :get, :class => 'btn btn-success'

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get 'order/invoice'
 
-  get 'order/payment'
+  get 'order/confirm', to: 'order#confirm', as: 'order_confirm'
 
   # get 'order/process_payment'
 
