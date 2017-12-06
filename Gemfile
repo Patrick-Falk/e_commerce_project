@@ -67,7 +67,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'country_select'
 
 # rubocop - code checker
-# gem 'rubocop'
+gem 'rubocop-rails'
 
 # slim - enables cleaner front-end source files
 gem 'slim-rails'
